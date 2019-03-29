@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/nav_homepage"
+            android:icon="@drawable/ic_homepage"
+            android:title="首页"
+            />
+        <item
+            android:id="@+id/nav_topic"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="我的话题" />
+        <item
+            android:id="@+id/nav_collection"
+            android:icon="@drawable/ic_collection"
+            android:title="我的收藏" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history"
+            android:title="历史记录" />
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/nav_theme"
+            android:icon="@drawable/ic_theme"
+            android:title="主题" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_setting"
+            android:title="设置" />
+    </group>
+</menu>

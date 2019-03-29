@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SmileCollege</string>
+    <string name="nav_username">Lynn</string>
+    <string name="nav_userinfor">这里是个人签名</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">主页</string>
+    <string name="title_dynamic">动态</string>
+    <string name="title_notifications">消息</string>
+</resources>
