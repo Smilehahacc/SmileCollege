@@ -7,4 +7,6 @@
     <dimen name="infor_left">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="bar_width">95dp</dimen>
+    <dimen name="portrait_size">100dp</dimen>
+    <dimen name="cover_pic_size">340dp</dimen>
 </resources>

@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@string/portrait_size"
-        android:layout_height="@string/portrait_size"
+        android:layout_width="@dimen/portrait_size"
+        android:layout_height="@dimen/portrait_size"
         android:paddingLeft="@dimen/infor_left"
         android:paddingBottom="6dp"
         android:contentDescription="@string/nav_header_desc"

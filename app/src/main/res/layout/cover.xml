@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF">
-
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/cover"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/cover_pic_size"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:paddingBottom="100dp"
         android:src="@mipmap/cover" />
 
     <ImageView
         android:id="@+id/cover_text"
-        android:layout_width="280dp"
-        android:layout_height="30dp"
+        android:layout_width="160dp"
+        android:layout_height="14dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="28dp"
@@ -29,8 +30,9 @@
         android:layout_height="wrap_content"
         android:text="@string/copyright_text"
         android:textAlignment="center"
-        android:textColor="#919191"
-        android:textSize="14sp"
+        android:textColor="#C0C0C0"
+        android:textSize="8sp"
+        android:paddingBottom="16dp"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
