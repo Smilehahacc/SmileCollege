@@ -11,4 +11,7 @@
     <string name="title_home">主页</string>
     <string name="title_dynamic">动态</string>
     <string name="title_notifications">消息</string>
+    <string name="copyright_text">Copyright©2019 Lynn</string>
+    <string name="portrait_size">100dp</string>
+
 </resources>
