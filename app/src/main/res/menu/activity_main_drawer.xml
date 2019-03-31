@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -11,20 +10,20 @@
         <item
             android:id="@+id/nav_homepage"
             android:icon="@drawable/ic_homepage"
-            android:title="首页"
+            android:title="@string/title_home"
             />
         <item
             android:id="@+id/nav_topic"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="我的话题" />
+            android:title="@string/title_my_conversation" />
         <item
             android:id="@+id/nav_collection"
             android:icon="@drawable/ic_collection"
-            android:title="我的收藏" />
+            android:title="@string/title_my_collection" />
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history"
-            android:title="历史记录" />
+            android:title="@string/title_history" />
     </group>
 
     <group

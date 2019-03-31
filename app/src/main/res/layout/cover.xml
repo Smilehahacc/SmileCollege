@@ -12,13 +12,13 @@
         android:layout_width="@dimen/cover_pic_size"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="100dp"
+        android:paddingTop="20dp"
         android:src="@mipmap/cover" />
 
     <ImageView
-        android:id="@+id/cover_text"
-        android:layout_width="160dp"
-        android:layout_height="14dp"
+        android:id="@+id/cover_text1"
+        android:layout_width="162dp"
+        android:layout_height="18dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="28dp"
@@ -30,8 +30,9 @@
         android:layout_height="wrap_content"
         android:text="@string/copyright_text"
         android:textAlignment="center"
-        android:textColor="#C0C0C0"
+        android:textColor="#949494"
         android:textSize="8sp"
+
         android:paddingBottom="16dp"
         android:layout_alignParentBottom="true"/>
 
