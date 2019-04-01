@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.smilecollege.frament.DynamicFragment;
 import com.example.smilecollege.frament.HomepgaeFragment;
@@ -31,12 +32,13 @@ public class MainActivity extends AppCompatActivity
     private Fragment[] fragments;
     private int lastfragment;
     private Toolbar toolbar;
+    private long mExitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.find_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.search_toolbar);
         toolbar.setTitle(R.string.title_home);
 //        将原来的替换掉
         setSupportActionBar(toolbar);
@@ -56,10 +58,10 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        findViewById(R.id.find_bar).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.search_bar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FindActivity.class);
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 //启动
                 startActivity(intent);
             }
@@ -70,10 +72,21 @@ public class MainActivity extends AppCompatActivity
         StatusBarUtil.setTransparent(this);
     }
 
+    //声明一个long类型变量mExitTime;：用于存放上一点击“返回键”的时刻，重写返回按钮的监听器
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
-            moveTaskToBack(true);
+        //判断用户是否点击了“返回键”
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //与上次点击返回键时刻作差
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                //大于2000ms则认为是误操作，使用Toast进行提示
+                Toast.makeText(this, "再按一次退出程序哦～", Toast.LENGTH_SHORT).show();
+                //并记录下本次点击“返回键”的时刻，以便下次进行判断
+                mExitTime = System.currentTimeMillis();
+            } else {
+                //小于2000ms则认为是用户确实希望退出程序-调用System.exit()方法进行退出
+                System.exit(0);
+            }
             return true;
         }
         return super.onKeyDown(keyCode, event);

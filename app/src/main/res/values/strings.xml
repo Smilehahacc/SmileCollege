@@ -22,7 +22,7 @@
     <string name="title_my_collection">我的收藏</string>
     <string name="title_history">历史记录</string>
     <string name="title_setting">设置</string>
-    <string name="title_find">请输入要搜索的帖子</string>
+    <string name="title_search">请输入要搜索的帖子</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -96,4 +96,5 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_cancel">取消</string>
 </resources>

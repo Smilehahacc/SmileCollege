@@ -1,0 +1,39 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".activity.SearchActivity"
+    android:foregroundGravity="right|bottom">
+
+    <include layout="@layout/toolbar" />
+
+    <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/search_bar_margin_left"
+            android:layout_marginEnd="@dimen/search_bar_margin_right"
+            android:background="@drawable/search_bar1"
+            android:textColor="#000000"
+            android:inputType="text"
+            android:maxLength="20"
+            android:hint="@string/title_search"
+            android:textColorHint="#B8B8B8"
+            android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/search_back"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="@string/title_cancel"
+        android:textColor="#ffffff"
+        android:layout_marginTop="14dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="350dp"
+        />
+
+</FrameLayout>

@@ -9,5 +9,6 @@
     <dimen name="bar_width">95dp</dimen>
     <dimen name="portrait_size">100dp</dimen>
     <dimen name="cover_pic_size">340dp</dimen>
-    <dimen name="find_bar_margin">40dp</dimen>
+    <dimen name="search_bar_margin_left">10dp</dimen>
+    <dimen name="search_bar_margin_right">80dp</dimen>
 </resources>
