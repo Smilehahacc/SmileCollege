@@ -1,4 +1,5 @@
 package com.example.smilecollege.activity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,8 +13,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smilecollege.frament.DynamicFragment;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+//        顶部搜索栏跳转监听器
         findViewById(R.id.search_bar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,10 +71,22 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+//        点击头像跳转到个人信息页面或者登录页面
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        headerView.findViewById(R.id.portrait).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 //        初始化话页面
         initFragment();
         StatusBarUtil.setTransparent(this);
     }
+
 
     //声明一个long类型变量mExitTime;：用于存放上一点击“返回键”的时刻，重写返回按钮的监听器
     @Override
@@ -166,12 +182,15 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            View v = getWindow().getDecorView();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                 {
                     if(lastfragment!=0)
                     {
                         toolbar.setTitle(R.string.title_home);
+                        // 显示搜索框
+                        v.findViewById(R.id.search_bar).setVisibility(View.VISIBLE);
                         switchFragment(lastfragment,0);
                         lastfragment=0;
                     }
@@ -182,6 +201,7 @@ public class MainActivity extends AppCompatActivity
                     if(lastfragment!=1)
                     {
                         toolbar.setTitle(R.string.title_follower);
+                        v.findViewById(R.id.search_bar).setVisibility(View.GONE);
                         switchFragment(lastfragment,1);
                         lastfragment=1;
                     }
@@ -192,6 +212,7 @@ public class MainActivity extends AppCompatActivity
                     if(lastfragment!=2)
                     {
                         toolbar.setTitle(R.string.title_notifications);
+                        v.findViewById(R.id.search_bar).setVisibility(View.GONE);
                         switchFragment(lastfragment,2);
                         lastfragment=2;
                     }

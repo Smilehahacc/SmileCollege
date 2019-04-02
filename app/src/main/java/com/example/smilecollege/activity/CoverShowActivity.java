@@ -1,7 +1,6 @@
 package com.example.smilecollege.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +13,7 @@ import com.example.smilecollege.R;
 /**
  * Created by HUPENG on 2016/9/21.
  */
-public class CoverShowActivity extends Activity {
+public class CoverShowActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +37,18 @@ public class CoverShowActivity extends Activity {
     };
 
     public void getHome(){
-        Intent intent = new Intent(CoverShowActivity.this, MainActivity.class);
+        Intent intent = new Intent(CoverShowActivity.this, TestActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return 0;
+    }
+
+    @Override
+    protected int getFragmentContentId() {
+        return 0;
     }
 }

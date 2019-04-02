@@ -9,7 +9,17 @@ import android.view.ViewGroup;
 
 import com.example.smilecollege.R;
 
-public class NotificationsFragment extends Fragment {
+public class NotificationsFragment extends BaseFragment {
+    @Override
+    protected void initView(View view, Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
     //    private TextView textView;
 //    private Button button;
     @Nullable
@@ -19,10 +29,4 @@ public class NotificationsFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-
-    }
 }

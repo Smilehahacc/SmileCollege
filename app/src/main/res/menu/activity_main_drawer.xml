@@ -33,10 +33,10 @@
         <item
             android:id="@+id/nav_theme"
             android:icon="@drawable/ic_theme"
-            android:title="主题" />
+            android:title="@string/title_theme" />
         <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_setting"
-            android:title="设置" />
+            android:title="@string/title_setting" />
     </group>
 </menu>

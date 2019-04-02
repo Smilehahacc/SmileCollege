@@ -13,7 +13,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/portrait"
         android:layout_width="@dimen/portrait_size"
         android:layout_height="@dimen/portrait_size"
         android:paddingStart="@dimen/infor_left"
