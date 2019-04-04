@@ -16,6 +16,6 @@
     </FrameLayout>
 
     <include layout="@layout/activity_bottom_layout" />
-    <include layout="@layout/search_bar" />
+    <include layout="@layout/search_button" />
 
 </android.support.constraint.ConstraintLayout>

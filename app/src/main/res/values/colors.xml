@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F8769D</color>
-    <color name="colorPrimaryDark">#FF6791</color>
+
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <!--<color name="colorPrimary">#F8769D</color>-->
+    <!--<color name="colorPrimaryDark">#FF6791</color>-->
     <color name="colorAccent">#D81B60</color>
+
+    <color name="accent_color">#303F9F</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="drawerArrowColor">#FFFFFF</color>
+
+    <color name="red">#F44336</color>
+    <color name="magenta">#FF4777</color>
+    <color name="pink">#FF6791</color>
+    <color name="pink_peach">#F47983</color>
+    <color name="orange">#FA8C35</color>
+    <color name="orange_yellow">#FF8936</color>
+    <color name="yellow">#FAFF72</color>
+    <color name="yellow_goose">#FFF143</color>
+    <color name="lime">#CDDC39</color>
+    <color name="green">#4CAF50</color>
+    <color name="green_teal">#009688</color>
+    <color name="green_ai">#A4E2C6</color>
+    <color name="emerald">#3DE1AD</color>
+    <color name="cyan">#00BCD4</color>
+    <color name="blue">#44CEF6</color>
+    <color name="blue_dark">#303F9F</color>
+    <color name="blue_sapphire">#4B5CC4</color>
+    <color name="purple_light">#B0A4E3</color>
+    <color name="purple">#8d4bbb</color>
+    <color name="purple_dark">#673AB7</color>
+    <color name="purple_clove">#CCA4E3</color>
 </resources>

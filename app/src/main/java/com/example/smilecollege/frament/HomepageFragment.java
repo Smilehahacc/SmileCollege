@@ -2,16 +2,23 @@ package com.example.smilecollege.frament;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.smilecollege.R;
+import com.example.smilecollege.base.BaseFragment;
 
-public class HomepgaeFragment extends BaseFragment {
+public class HomepageFragment extends BaseFragment {
+
+    static HomepageFragment instance;
+    public static HomepageFragment getInstance() {
+        if (instance == null) {
+            instance = new HomepageFragment();
+        }
+        return instance;
+    }
+
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
 

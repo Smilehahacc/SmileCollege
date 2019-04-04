@@ -8,8 +8,17 @@ import android.view.ViewGroup;
 
 
 import com.example.smilecollege.R;
+import com.example.smilecollege.base.BaseFragment;
 
 public class DynamicFragment extends BaseFragment {
+
+    static DynamicFragment instance;
+    public static DynamicFragment getInstance() {
+        if (instance == null) {
+            instance = new DynamicFragment();
+        }
+        return instance;
+    }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
@@ -21,8 +30,6 @@ public class DynamicFragment extends BaseFragment {
         return 0;
     }
 
-    //    private TextView textView;
-//    private Button button;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

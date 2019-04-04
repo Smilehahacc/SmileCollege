@@ -1,4 +1,4 @@
-package com.example.smilecollege.tools;
+package com.example.smilecollege.utils;
 
 import android.content.Context;
 import android.view.View;

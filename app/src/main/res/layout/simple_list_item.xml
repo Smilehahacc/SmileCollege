@@ -3,11 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <!-- 设定列表项的分割线为蓝色，并且数据项之间分割10个dp -->
+
+    <LinearLayout
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <!-- LinnerLayout定义的三个控件，将成为ListView控件的模板 -->
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:maxHeight="5dp"
+            android:maxWidth="5dp"
+            android:src="@drawable/ic_icon" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="好友名称" />
+
+        <TextView
+            android:id="@+id/tvSS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="4"
+            android:text="签名" />
+    </LinearLayout>
+
     <ListView
-        android:id="@+id/listviewsimple"
+        android:id="@+id/lvArray"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="#00F"
-        android:dividerHeight="10dp"/>
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

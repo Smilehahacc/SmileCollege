@@ -12,7 +12,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.example.smilecollege.R;
-import com.example.smilecollege.tools.KeyboardHelper;
+import com.example.smilecollege.base.BaseActivity;
+import com.example.smilecollege.utils.KeyboardHelper;
 
 import java.util.Timer;
 import java.util.TimerTask;

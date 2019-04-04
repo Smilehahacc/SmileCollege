@@ -1,6 +1,6 @@
 package com.example.smilecollege.activity;
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,29 +13,37 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.smilecollege.base.BaseActivity;
 import com.example.smilecollege.frament.DynamicFragment;
-import com.example.smilecollege.frament.HomepgaeFragment;
+import com.example.smilecollege.frament.HomepageFragment;
 import com.example.smilecollege.frament.NotificationsFragment;
 import com.example.smilecollege.R;
 import com.jaeger.library.StatusBarUtil;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     //    变量声明
-    private Fragment fragment1;
-    private Fragment fragment2;
-    private Fragment fragment3;
     private Fragment[] fragments;
     private int lastfragment;
     private Toolbar toolbar;
     private long mExitTime;
+
+    @Override
+    protected int getContentViewId() {
+        return 0;
+    }
+
+    @Override
+    protected int getFragmentContentId() {
+        return 0;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 //        顶部搜索栏跳转监听器
-        findViewById(R.id.search_bar).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.search_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
@@ -82,7 +90,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-//        初始化话页面
+//        初始化话页面，并设置状态栏透明
         initFragment();
         StatusBarUtil.setTransparent(this);
     }
@@ -156,7 +164,8 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.nav_history) {
 
         }else if (id == R.id.nav_theme) {
-
+            Intent intent = new Intent(MainActivity.this, ForumActivity.class);
+            startActivity(intent);
         }else if (id == R.id.nav_setting) {
 
         }
@@ -166,15 +175,31 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    //    初始化碎片
+    //    初始化碎片，方便后面调用切换页面
     private void initFragment()
     {
-        fragment1 = new HomepgaeFragment();
-        fragment2 = new DynamicFragment();
-        fragment3 = new NotificationsFragment();
-        fragments = new Fragment[]{fragment1,fragment2,fragment3};
+//        将所有fragment对象封装入一个数组
+        fragments = new Fragment[]{
+                HomepageFragment.getInstance(),
+                DynamicFragment.getInstance(),
+                NotificationsFragment.getInstance()
+        };
         lastfragment=0;
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_view,fragment1).show(fragment1).commit();
+
+//        提交事务，设置起始页碎片布局
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_view,fragments[0]).show(fragments[0]).commit();
+    }
+
+    /*
+     * 隐藏所有的Fragment
+     */
+    private void hideFragment(FragmentTransaction transaction) {
+
+        for (Fragment f: fragments){
+            if (f != null) {
+                transaction.hide(f);
+            }
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -190,7 +215,7 @@ public class MainActivity extends AppCompatActivity
                     {
                         toolbar.setTitle(R.string.title_home);
                         // 显示搜索框
-                        v.findViewById(R.id.search_bar).setVisibility(View.VISIBLE);
+                        v.findViewById(R.id.search_button).setVisibility(View.VISIBLE);
                         switchFragment(lastfragment,0);
                         lastfragment=0;
                     }
@@ -201,7 +226,7 @@ public class MainActivity extends AppCompatActivity
                     if(lastfragment!=1)
                     {
                         toolbar.setTitle(R.string.title_follower);
-                        v.findViewById(R.id.search_bar).setVisibility(View.GONE);
+                        v.findViewById(R.id.search_button).setVisibility(View.GONE);
                         switchFragment(lastfragment,1);
                         lastfragment=1;
                     }
@@ -212,7 +237,7 @@ public class MainActivity extends AppCompatActivity
                     if(lastfragment!=2)
                     {
                         toolbar.setTitle(R.string.title_notifications);
-                        v.findViewById(R.id.search_bar).setVisibility(View.GONE);
+                        v.findViewById(R.id.search_button).setVisibility(View.GONE);
                         switchFragment(lastfragment,2);
                         lastfragment=2;
                     }
