@@ -1,19 +1,17 @@
 package com.example.smilecollege.activity;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.example.smilecollege.R;
 import com.example.smilecollege.base.BaseActivity;
 import com.example.smilecollege.utils.KeyboardHelper;
+import com.jaeger.library.StatusBarUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,14 +27,11 @@ public class SearchActivity extends BaseActivity {
         setContentView(R.layout.activity_search_layout);
         Boolean_showInputMethod = true;
 
-//        手动设置状态栏颜色
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-        }
+        // 手动设置状态栏颜色
+        StatusBarUtil.setColorNoTranslucent(SearchActivity.this,getResources().getColor(R.color.colorPrimaryDark));
+        SearchActivity.this.getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-//        按取消按钮之后结束当前活动，即返回上一级
+        // 按取消按钮之后结束当前活动，即返回上一级
         findViewById(R.id.search_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +41,7 @@ public class SearchActivity extends BaseActivity {
         });
 
         editText = findViewById(R.id.search_edit);
-//        点击搜索栏自动呼出输入法
+        // 点击搜索栏自动呼出输入法
         editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +56,7 @@ public class SearchActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        自动弹出键盘,获取焦点
+        // 自动弹出键盘,获取焦点
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
@@ -86,7 +81,7 @@ public class SearchActivity extends BaseActivity {
         return 0;
     }
 
-    //    重写返回的方法，若键盘显示则关闭键盘，若无则返回上级
+    // 重写返回的方法，若键盘显示则关闭键盘，若无则返回上级
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -101,7 +96,7 @@ public class SearchActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    //使editText点击外部时候失去焦点
+    // 使editText点击外部时候失去焦点
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
@@ -126,7 +121,7 @@ public class SearchActivity extends BaseActivity {
         if (!(v == null) && (v instanceof EditText)) {
             editText = (EditText) v;
             int[] leftTop = {0, 0};
-            //获取输入框当前的location位置
+            // 获取输入框当前的location位置
             v.getLocationInWindow(leftTop);
             int left = leftTop[0];
             int top = leftTop[1];

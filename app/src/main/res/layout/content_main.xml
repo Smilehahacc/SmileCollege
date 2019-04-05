@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.MainActivity">
 
@@ -16,6 +17,6 @@
     </FrameLayout>
 
     <include layout="@layout/activity_bottom_layout" />
-    <include layout="@layout/search_button" />
+    <include layout="@layout/toolbar_main" />
 
 </android.support.constraint.ConstraintLayout>

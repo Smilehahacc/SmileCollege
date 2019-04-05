@@ -113,4 +113,6 @@
     <string name="title_theme">主题</string>
     <string name="forum_title">你喜欢的，都在这里！</string>
     <string name="white">#365663</string>
+    <string name="toolbar_title">主页</string>
+
 </resources>

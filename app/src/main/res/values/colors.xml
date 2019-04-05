@@ -6,17 +6,20 @@
     <!--<color name="colorPrimary">#F8769D</color>-->
     <!--<color name="colorPrimaryDark">#FF6791</color>-->
     <color name="colorAccent">#D81B60</color>
+    <color name="toolbar_text">#000000</color>
+
 
     <color name="accent_color">#303F9F</color>
     <color name="navigationBarColor">#000000</color>
     <color name="drawerArrowColor">#FFFFFF</color>
+    <color name="gray">#F3F3F3</color>
 
     <color name="red">#F44336</color>
     <color name="magenta">#FF4777</color>
     <color name="pink">#FF6791</color>
     <color name="pink_peach">#F47983</color>
     <color name="orange">#FA8C35</color>
-    <color name="orange_yellow">#FF8936</color>
+    <color name="brown">#834f37</color>
     <color name="yellow">#FAFF72</color>
     <color name="yellow_goose">#FFF143</color>
     <color name="lime">#CDDC39</color>

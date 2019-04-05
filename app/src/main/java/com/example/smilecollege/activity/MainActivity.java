@@ -10,13 +10,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smilecollege.base.BaseActivity;
@@ -26,6 +26,8 @@ import com.example.smilecollege.frament.NotificationsFragment;
 import com.example.smilecollege.R;
 import com.jaeger.library.StatusBarUtil;
 
+import java.util.Objects;
+
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,52 +36,60 @@ public class MainActivity extends BaseActivity
     private int lastfragment;
     private Toolbar toolbar;
     private long mExitTime;
-
-    @Override
-    protected int getContentViewId() {
-        return 0;
-    }
-
-    @Override
-    protected int getFragmentContentId() {
-        return 0;
-    }
+    private TextView textView;
+    private MenuItem menuItem;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private BottomNavigationView navigation;
+    private boolean Boolean_Search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.search_toolbar);
-        toolbar.setTitle(R.string.title_home);
-//        将原来的替换掉
+        toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        // 将原来的替换掉
         setSupportActionBar(toolbar);
-//        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+        // 去掉默认显示的标题
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
 
-//        为左侧滑栏中的按钮添加监听器
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        // 初始化话页面，设置状态栏的样式，添加部分事件监听
+        initFragment();
+        setStatusBar();
+        addListener();
+    }
+
+    protected void setStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // 设置状态栏文字为深色模式
+            MainActivity.this.getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        StatusBarUtil.setColorForDrawerLayout(MainActivity.this,
+                drawerLayout, getResources().getColor(R.color.gray));
+        StatusBarUtil.setColorNoTranslucent(MainActivity.this,
+                getResources().getColor(R.color.colorPrimaryDark));
+    }
+
+    protected void addListener() {
+
+//        // 设置侧滑栏原生打开按钮
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
+
+        // 为左侧滑栏中的按钮添加监听器
         navigationView.setNavigationItemSelectedListener(this);
-
-//        底部按钮添加监听器
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        // 底部按钮添加监听器
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-//        顶部搜索栏跳转监听器
-        findViewById(R.id.search_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                //启动
-                startActivity(intent);
-            }
-        });
-
-//        点击头像跳转到个人信息页面或者登录页面
+        // 点击头像跳转到个人信息页面或者登录页面
         View headerView = navigationView.inflateHeaderView(R.layout.nav_header_main);
         headerView.findViewById(R.id.portrait).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,13 +98,19 @@ public class MainActivity extends BaseActivity
                 startActivity(intent);
             }
         });
-
-
-//        初始化话页面，并设置状态栏透明
-        initFragment();
-        StatusBarUtil.setTransparent(this);
     }
 
+    // 添加自定义按钮
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        menuItem = menu.findItem(R.id.toolbar_search);
+        if(Boolean_Search) {
+            menuItem.setVisible(true);
+        }
+        return true;
+    }
 
     //声明一个long类型变量mExitTime;：用于存放上一点击“返回键”的时刻，重写返回按钮的监听器
     @Override
@@ -126,14 +142,6 @@ public class MainActivity extends BaseActivity
         }
     }
 
-//    添加右上角菜单
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -142,7 +150,12 @@ public class MainActivity extends BaseActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.toolbar_setting) {
+            return true;
+        }else if (id == R.id.toolbar_search) {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            // 启动
+            startActivity(intent);
             return true;
         }
 
@@ -178,15 +191,15 @@ public class MainActivity extends BaseActivity
     //    初始化碎片，方便后面调用切换页面
     private void initFragment()
     {
-//        将所有fragment对象封装入一个数组
+        // 将所有fragment对象封装入一个数组
         fragments = new Fragment[]{
                 HomepageFragment.getInstance(),
                 DynamicFragment.getInstance(),
                 NotificationsFragment.getInstance()
         };
-        lastfragment=0;
-
-//        提交事务，设置起始页碎片布局
+        lastfragment = 0;
+        Boolean_Search = true;
+        // 提交事务，设置起始页碎片布局
         getSupportFragmentManager().beginTransaction().replace(R.id.main_view,fragments[0]).show(fragments[0]).commit();
     }
 
@@ -213,11 +226,12 @@ public class MainActivity extends BaseActivity
                 {
                     if(lastfragment!=0)
                     {
-                        toolbar.setTitle(R.string.title_home);
-                        // 显示搜索框
-                        v.findViewById(R.id.search_button).setVisibility(View.VISIBLE);
                         switchFragment(lastfragment,0);
                         lastfragment=0;
+                        textView = (TextView) findViewById(R.id.toolbar_main_title);
+                        textView.setText(R.string.title_home);
+                        // 显示搜索框
+                        Boolean_Search=true;
                     }
                     return true;
                 }
@@ -225,10 +239,11 @@ public class MainActivity extends BaseActivity
                 {
                     if(lastfragment!=1)
                     {
-                        toolbar.setTitle(R.string.title_follower);
-                        v.findViewById(R.id.search_button).setVisibility(View.GONE);
                         switchFragment(lastfragment,1);
                         lastfragment=1;
+                        textView = (TextView) findViewById(R.id.toolbar_main_title);
+                        textView.setText(R.string.title_follower);
+                        Boolean_Search=false;
                     }
                     return true;
                 }
@@ -236,10 +251,11 @@ public class MainActivity extends BaseActivity
                 {
                     if(lastfragment!=2)
                     {
-                        toolbar.setTitle(R.string.title_notifications);
-                        v.findViewById(R.id.search_button).setVisibility(View.GONE);
                         switchFragment(lastfragment,2);
                         lastfragment=2;
+                        textView = (TextView) findViewById(R.id.toolbar_main_title);
+                        textView.setText(R.string.title_notifications);
+                        Boolean_Search=false;
                     }
                     return true;
                 }
@@ -258,6 +274,16 @@ public class MainActivity extends BaseActivity
         }
         transaction.show(fragments[index]).commitAllowingStateLoss();
 
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return 0;
+    }
+
+    @Override
+    protected int getFragmentContentId() {
+        return 0;
     }
 
 }
