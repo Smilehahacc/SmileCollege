@@ -33,7 +33,7 @@ public class RegisterFragment extends BaseFragment {
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         textView = view.findViewById(R.id.toolbar_base_title);
-        textView.setText(R.string.title_register);
+        textView.setText(R.string.title_register_short);
         return view;
     }
 
