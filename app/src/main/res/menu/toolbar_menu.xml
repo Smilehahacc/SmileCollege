@@ -13,4 +13,10 @@
         android:visible="false"
         android:icon="@drawable/ic_setting"
         app:showAsAction="ifRoom"/>
+    <!--返回-->
+    <item android:id="@+id/toolbar_back"
+        android:title="@string/title_back"
+        android:visible="false"
+        android:icon="@drawable/ic_back"
+        app:showAsAction="ifRoom"/>
 </menu>

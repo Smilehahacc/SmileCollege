@@ -32,7 +32,7 @@ public class SearchActivity extends BaseActivity {
         SearchActivity.this.getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
         // 按取消按钮之后结束当前活动，即返回上一级
-        findViewById(R.id.search_back).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.search_back_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 KeyboardHelper.HideKeyboard(v);

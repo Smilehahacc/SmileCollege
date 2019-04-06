@@ -11,8 +11,9 @@
 
     <color name="accent_color">#303F9F</color>
     <color name="navigationBarColor">#000000</color>
-    <color name="drawerArrowColor">#FFFFFF</color>
+    <color name="drawerArrowColor">#000000</color>
     <color name="gray">#F3F3F3</color>
+    <color name="tips">#BBBBBB</color>
 
     <color name="red">#F44336</color>
     <color name="magenta">#FF4777</color>

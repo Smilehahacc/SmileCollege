@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -38,7 +39,7 @@ public class MainActivity extends BaseActivity
     private long mExitTime;
     private TextView textView;
     private MenuItem menuItem;
-    private DrawerLayout drawer;
+    private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private BottomNavigationView navigation;
     private boolean Boolean_Search;
@@ -53,7 +54,7 @@ public class MainActivity extends BaseActivity
         // 去掉默认显示的标题
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
 
@@ -69,20 +70,20 @@ public class MainActivity extends BaseActivity
             MainActivity.this.getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        StatusBarUtil.setColorForDrawerLayout(MainActivity.this,
-                drawerLayout, getResources().getColor(R.color.gray));
-        StatusBarUtil.setColorNoTranslucent(MainActivity.this,
-                getResources().getColor(R.color.colorPrimaryDark));
+        StatusBarUtil.setTranslucent(MainActivity.this, 1);
+//        StatusBarUtil.setColorNoTranslucent(MainActivity.this,
+//                getResources().getColor(R.color.colorPrimaryDark));
+
     }
 
     protected void addListener() {
 
-//        // 设置侧滑栏原生打开按钮
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
+//      // 设置侧滑栏原生打开按钮
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        // 设置按钮旋转动画
+        toggle.syncState();
 
         // 为左侧滑栏中的按钮添加监听器
         navigationView.setNavigationItemSelectedListener(this);
@@ -94,7 +95,7 @@ public class MainActivity extends BaseActivity
         headerView.findViewById(R.id.portrait).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this, SearchActivity.class);
+                Intent intent= new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -108,6 +109,8 @@ public class MainActivity extends BaseActivity
         menuItem = menu.findItem(R.id.toolbar_search);
         if(Boolean_Search) {
             menuItem.setVisible(true);
+        }else {
+            menuItem.setVisible(false);
         }
         return true;
     }
