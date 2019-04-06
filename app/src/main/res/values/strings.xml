@@ -121,5 +121,10 @@
     <string name="title_password_tips">请输入密码</string>
     <string name="title_back">返回</string>
     <string name="title_search">请输入要搜索的校园</string>
+    <string name="title_register_short">注册</string>
+    <string name="title_username_tips_register">用户名</string>
+    <string name="title_password_tips_register">6-16位密码</string>
+    <string name="title_phone_tips_register">手机号码</string>
+    <string name="title_email_tips_register">电子邮箱</string>
 
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimary">#FF4777</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
     <!--<color name="colorPrimary">#F8769D</color>-->
     <!--<color name="colorPrimaryDark">#FF6791</color>-->
@@ -13,7 +13,7 @@
     <color name="navigationBarColor">#000000</color>
     <color name="drawerArrowColor">#000000</color>
     <color name="gray">#F3F3F3</color>
-    <color name="tips">#BBBBBB</color>
+    <color name="tips">#BEBEBE</color>
 
     <color name="red">#F44336</color>
     <color name="magenta">#FF4777</color>

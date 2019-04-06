@@ -24,31 +24,32 @@
             <EditText
                 android:id="@+id/username"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/edit_text_height"
                 android:layout_marginTop="5dp"
                 android:inputType="text"
                 android:maxLength="20"
                 android:paddingStart="55dp"
                 android:paddingEnd="60dp"
                 android:textColorHint="@color/tips"
-                android:hint="@string/title_login_tips"
+                android:hint="@string/title_username_tips_register"
                 android:textColor="@color/toolbar_text"
                 android:background="@drawable/login_edit_text"/>
             <ImageView
                 android:id="@+id/username_tips"
+                android:contentDescription="@string/title_password_tips"
                 android:layout_width="@dimen/tips_icon_size"
                 android:layout_height="@dimen/tips_icon_size"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="@dimen/tips_icon_margin"
                 android:src="@drawable/ic_user"
                 android:visibility="visible"/>
-            <Button
-                android:id="@+id/username_clear"
-                android:layout_width="@dimen/tips_icon_size"
-                android:layout_height="@dimen/tips_icon_size"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="@dimen/tips_icon_margin"
-                android:background="@drawable/ic_clear" />
+            <!--<Button-->
+                <!--android:id="@+id/username_clear"-->
+                <!--android:layout_width="@dimen/tips_icon_size"-->
+                <!--android:layout_height="@dimen/tips_icon_size"-->
+                <!--android:layout_gravity="end|center_vertical"-->
+                <!--android:layout_marginEnd="@dimen/tips_icon_margin"-->
+                <!--android:background="@drawable/ic_clear" />-->
 
         </FrameLayout>
 
@@ -57,19 +58,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/password_layout"
             android:layout_below="@id/username_layout"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/button_register_marginTop"
             android:gravity="center" >
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/edit_text_height"
                 android:inputType="textPassword"
                 android:maxLength="20"
                 android:paddingStart="55dp"
                 android:paddingEnd="60dp"
                 android:textColorHint="@color/tips"
-                android:hint="@string/title_password_tips"
+                android:hint="@string/title_password_tips_register"
                 android:textColor="@color/toolbar_text"
                 android:background="@drawable/login_edit_text" />
             <ImageView
@@ -81,25 +82,101 @@
                 android:src="@drawable/ic_password"
                 android:layout_marginStart="@dimen/tips_icon_margin"
                 android:visibility="visible"/>
-            <Button
-                android:id="@+id/password_forget"
+            <!--<Button-->
+                <!--android:id="@+id/password_forget"-->
+                <!--android:layout_width="@dimen/tips_icon_size"-->
+                <!--android:layout_height="@dimen/tips_icon_size"-->
+                <!--android:background="@drawable/ic_forget"-->
+                <!--android:layout_gravity="end|center_vertical"-->
+                <!--android:layout_marginEnd="@dimen/tips_icon_margin" />-->
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_layout"
+            android:layout_below="@id/password_layout"
+            android:layout_marginTop="@dimen/button_register_marginTop"
+            android:gravity="center" >
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:paddingStart="55dp"
+                android:paddingEnd="60dp"
+                android:textColorHint="@color/tips"
+                android:hint="@string/title_email_tips_register"
+                android:textColor="@color/toolbar_text"
+                android:background="@drawable/login_edit_text" />
+            <ImageView
+                android:id="@+id/email_tips"
+                android:contentDescription="@string/title_password_tips"
                 android:layout_width="@dimen/tips_icon_size"
                 android:layout_height="@dimen/tips_icon_size"
-                android:background="@drawable/ic_forget"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="@dimen/tips_icon_margin" />
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_email"
+                android:layout_marginStart="@dimen/tips_icon_margin"
+                android:visibility="visible"/>
+            <!--<Button-->
+                <!--android:id="@+id/email_forget"-->
+                <!--android:layout_width="@dimen/tips_icon_size"-->
+                <!--android:layout_height="@dimen/tips_icon_size"-->
+                <!--android:background="@drawable/ic_forget"-->
+                <!--android:layout_gravity="end|center_vertical"-->
+                <!--android:layout_marginEnd="@dimen/tips_icon_margin" />-->
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phone_layout"
+            android:layout_below="@id/email_layout"
+            android:layout_marginTop="@dimen/button_register_marginTop"
+            android:gravity="center" >
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:paddingStart="55dp"
+                android:paddingEnd="60dp"
+                android:textColorHint="@color/tips"
+                android:hint="@string/title_phone_tips_register"
+                android:textColor="@color/toolbar_text"
+                android:background="@drawable/login_edit_text" />
+            <ImageView
+                android:id="@+id/phone_tips"
+                android:contentDescription="@string/title_password_tips"
+                android:layout_width="@dimen/tips_icon_size"
+                android:layout_height="@dimen/tips_icon_size"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_phone"
+                android:layout_marginStart="@dimen/tips_icon_margin"
+                android:visibility="visible"/>
+            <!--<Button-->
+                <!--android:id="@+id/phone_forget"-->
+                <!--android:layout_width="@dimen/tips_icon_size"-->
+                <!--android:layout_height="@dimen/tips_icon_size"-->
+                <!--android:background="@drawable/ic_forget"-->
+                <!--android:layout_gravity="end|center_vertical"-->
+                <!--android:layout_marginEnd="@dimen/tips_icon_margin" />-->
         </FrameLayout>
 
         <Button
             android:id="@+id/login"
             android:layout_width="fill_parent"
-            android:layout_height="44dp"
-            android:layout_below="@id/password_layout"
+            android:layout_height="@dimen/button_login_height"
+            android:layout_below="@id/phone_layout"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_login"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:text="@string/title_login" />
+            android:text="@string/title_register_short" />
     </RelativeLayout>
 
 </RelativeLayout>

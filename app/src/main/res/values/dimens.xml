@@ -25,4 +25,5 @@
     <dimen name="tips_icon_size">20dp</dimen>
     <dimen name="tips_icon_margin">20dp</dimen>
     <dimen name="search_bar_marginTop">8dp</dimen>
+    <dimen name="edit_text_height">50dp</dimen>
 </resources>

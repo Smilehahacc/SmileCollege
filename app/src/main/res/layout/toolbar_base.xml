@@ -6,4 +6,13 @@
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimaryDark"
     android:minHeight="?attr/actionBarSize">
+
+    <TextView
+        android:id="@+id/toolbar_base_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/toolbar_title"
+        android:textColor="@color/toolbar_text"
+        android:textSize="22sp" />
 </android.support.v7.widget.Toolbar>

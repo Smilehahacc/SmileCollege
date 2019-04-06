@@ -23,8 +23,10 @@ import android.widget.Toast;
 import com.example.smilecollege.base.BaseActivity;
 import com.example.smilecollege.frament.DynamicFragment;
 import com.example.smilecollege.frament.HomepageFragment;
+import com.example.smilecollege.frament.LoginFragment;
 import com.example.smilecollege.frament.NotificationsFragment;
 import com.example.smilecollege.R;
+import com.example.smilecollege.frament.RegisterFragment;
 import com.jaeger.library.StatusBarUtil;
 
 import java.util.Objects;
