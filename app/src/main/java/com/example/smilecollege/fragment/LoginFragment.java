@@ -1,4 +1,4 @@
-package com.example.smilecollege.frament;
+package com.example.smilecollege.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,12 +8,12 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.smilecollege.R;
+import com.example.smilecollege.activity.LoginActivity;
 import com.example.smilecollege.base.BaseFragment;
-
-import java.io.File;
 
 public class LoginFragment extends BaseFragment {
 
@@ -25,36 +25,40 @@ public class LoginFragment extends BaseFragment {
         return instance;
     }
 
+    private View view;
     private Toolbar toolbar;
     TextView textView;
+    private LoginActivity loginActivity;
+    private KeyEvent event;
+    private Button back;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_login,container,false);
-        view.setFocusable(true);//这个和下面的这个命令必须要设置了，才能监听back事件。
-        view.setFocusableInTouchMode(true);
-        view.setOnKeyListener(backlistener);
+        view=inflater.inflate(R.layout.fragment_login,container,false);
         toolbar = (Toolbar)view.findViewById(R.id.toolbar_base);
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         textView = view.findViewById(R.id.toolbar_base_title);
         textView.setText(R.string.title_login);
+
+        // 添加监听器
+        addListener();
         return view;
     }
 
-    private View.OnKeyListener backlistener = new View.OnKeyListener() {
-        @Override
-        public boolean onKey(View view, int i, KeyEvent keyEvent) {
-            if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-                // 表示按返回键 时的操作
-                if (i == KeyEvent.KEYCODE_BACK) {
-                        return true;
-                    }
+    protected void addListener() {
+
+        // 点击返回键回到登录-注册主界面
+        back = (Button)view.findViewById(R.id.button_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginActivity = (LoginActivity) getActivity();
+                loginActivity.onKeyDown(KeyEvent.KEYCODE_BACK,null);
             }
-            return false;
-        }
-    };
+        });
+    }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {

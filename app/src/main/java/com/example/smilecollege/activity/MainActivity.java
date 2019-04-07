@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -21,12 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smilecollege.base.BaseActivity;
-import com.example.smilecollege.frament.DynamicFragment;
-import com.example.smilecollege.frament.HomepageFragment;
-import com.example.smilecollege.frament.LoginFragment;
-import com.example.smilecollege.frament.NotificationsFragment;
+import com.example.smilecollege.fragment.DynamicFragment;
+import com.example.smilecollege.fragment.HomepageFragment;
+import com.example.smilecollege.fragment.NotificationsFragment;
 import com.example.smilecollege.R;
-import com.example.smilecollege.frament.RegisterFragment;
 import com.jaeger.library.StatusBarUtil;
 
 import java.util.Objects;

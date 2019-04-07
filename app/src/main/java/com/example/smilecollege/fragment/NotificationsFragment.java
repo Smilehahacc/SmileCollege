@@ -1,4 +1,4 @@
-package com.example.smilecollege.frament;
+package com.example.smilecollege.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

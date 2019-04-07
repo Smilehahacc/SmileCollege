@@ -14,4 +14,22 @@
         android:orientation="vertical">
     </FrameLayout>
 
+    <!--<fragment-->
+        <!--android:id="@+id/fragment_login"-->
+        <!--android:name="com.example.smilecollege.fragment.LoginFragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+    <!--<fragment-->
+        <!--android:id="@+id/fragment_register"-->
+        <!--android:name="com.example.smilecollege.fragment.RegisterFragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+    <!--<fragment-->
+        <!--android:id="@+id/fragment_login_main"-->
+        <!--android:name="com.example.smilecollege.fragment.LoginMainFragment"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
 </RelativeLayout>

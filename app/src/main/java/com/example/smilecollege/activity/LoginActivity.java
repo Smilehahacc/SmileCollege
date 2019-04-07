@@ -1,25 +1,19 @@
 package com.example.smilecollege.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Menu;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.smilecollege.R;
 import com.example.smilecollege.base.BaseActivity;
-import com.example.smilecollege.frament.DynamicFragment;
-import com.example.smilecollege.frament.HomepageFragment;
 
-import com.example.smilecollege.frament.LoginFragment;
-import com.example.smilecollege.frament.LoginMainFragment;
-import com.example.smilecollege.frament.RegisterFragment;
-import com.example.smilecollege.utils.KeyboardHelper;
+import com.example.smilecollege.fragment.LoginFragment;
+import com.example.smilecollege.fragment.LoginMainFragment;
+import com.example.smilecollege.fragment.RegisterFragment;
 import com.jaeger.library.StatusBarUtil;
 
 import java.util.Timer;
@@ -50,6 +44,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     protected void addListener() {
+
         // 进入登录界面
         findViewById(R.id.button_login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +82,8 @@ public class LoginActivity extends BaseActivity {
                 RegisterFragment.getInstance()
         };
         last_fragment = 0;
-//        // 提交事务，设置起始页碎片布局
+
+        // 提交事务，设置起始页碎片布局
         getSupportFragmentManager().beginTransaction().replace(R.id.login_view,fragments[0]).show(fragments[0]).commit();
     }
 
@@ -102,6 +98,38 @@ public class LoginActivity extends BaseActivity {
         }
         transaction.show(fragments[index]).commitAllowingStateLoss();
 
+    }
+
+    // 隐藏所有碎片
+    private void hideFragment(FragmentTransaction transaction) {
+
+        for (Fragment f: fragments){
+            if (f != null) {
+                transaction.hide(f);
+            }
+        }
+    }
+
+    // 定义返回按钮的操作，在登录界面点击则返回上一级，子界面点击则返回登录主界面
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            // 在登录-注册主界面，则返回上一级
+            if(last_fragment==0){
+                finish();
+            }else {
+                switchFragment(last_fragment,0);
+                last_fragment=0;
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    // 活动中内置按钮的监听
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

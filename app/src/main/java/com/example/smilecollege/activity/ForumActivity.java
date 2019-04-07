@@ -5,11 +5,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
 import com.example.smilecollege.R;
 import com.example.smilecollege.base.BaseActivity;
-import com.example.smilecollege.frament.RecyclerViewFragment;
+import com.example.smilecollege.fragment.RecyclerViewFragment;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
 
