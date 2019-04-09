@@ -34,7 +34,7 @@ public class RegisterFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_register,container,false);
+        view=inflater.inflate(R.layout.fragment_register,container,false);
         toolbar = (Toolbar)view.findViewById(R.id.toolbar_base);
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
